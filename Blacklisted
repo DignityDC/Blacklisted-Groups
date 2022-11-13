@@ -1,0 +1,14 @@
+blgroups = {123,456}
+
+function InGroups(player)
+	for _,v in pairs(blgroups) do
+		if player:IsInGroup(v) then
+			return true
+		end
+	end
+	return false
+end
+
+game.Players.PlayerAdded:connect(function(player)
+	if InGroups(player) then player:Kick("Blacklisted group") end
+end)
